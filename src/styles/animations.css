@@ -1,0 +1,135 @@
+/* 
+ * 📁 src/styles/animations.css
+ * Agrega este @import en tu index.css:
+ * @import './animations.css';
+ */
+
+/* ── Disparo del cursor ── */
+@keyframes shotRing {
+  0%   { transform: scale(1); opacity: 1; border-color: rgb(239,68,68); }
+  100% { transform: scale(6); opacity: 0; border-color: rgb(239,68,68); }
+}
+
+@keyframes shotFlash {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(2.5); opacity: 0.8; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* ── Preloader spinner ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Float bob vertical ── */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+
+/* ── Float bob horizontal ── */
+@keyframes floatX {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(-10px); }
+}
+
+/* ── Pulse suave ── */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* ── Shimmer (línea de luz que pasa) ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Entrada desde abajo (alternativa a Framer Motion para elementos estáticos) ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Entrada desde la izquierda ── */
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Entrada desde la derecha ── */
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Zoom in suave ── */
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Clases utilitarias ── */
+.animate-float-y      { animation: floatY 3.5s ease-in-out infinite; }
+.animate-float-x      { animation: floatX 4s ease-in-out infinite; }
+.animate-soft-pulse   { animation: softPulse 2.5s ease-in-out infinite; }
+.animate-fade-up      { animation: fadeUp 0.8s ease-out both; }
+.animate-fade-left    { animation: fadeLeft 0.8s ease-out both; }
+.animate-fade-right   { animation: fadeRight 0.8s ease-out both; }
+.animate-zoom-in      { animation: zoomIn 0.8s ease-out both; }
+
+/* Delays utilitarios */
+.delay-100  { animation-delay: 0.1s; }
+.delay-200  { animation-delay: 0.2s; }
+.delay-300  { animation-delay: 0.3s; }
+.delay-400  { animation-delay: 0.4s; }
+.delay-500  { animation-delay: 0.5s; }
+.delay-600  { animation-delay: 0.6s; }
+.delay-700  { animation-delay: 0.7s; }
+.delay-800  { animation-delay: 0.8s; }
+
+/* ── Shimmer en texto ── */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.6) 0%,
+    rgba(255,255,255,1) 40%,
+    rgba(255,255,255,0.6) 60%,
+    rgba(255,255,255,0.6) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ── Línea animada debajo de nav links ── */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: rgb(220,38,38);
+  transition: width 0.3s ease;
+}
+.nav-underline:hover::after {
+  width: 100%;
+}
+
+/* ── Ocultar cursor nativo ── */
+.cursor-none,
+.cursor-none * {
+  cursor: none !important;
+}
+
+/* ── Scrollbar rojo ── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0f1e; }
+::-webkit-scrollbar-thumb { background: rgb(220,38,38); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgb(185,28,28); }
